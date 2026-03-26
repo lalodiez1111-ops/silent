@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Silent Studio V3 | Visual Design Systems</title>
+    <title>Silent Studio | AI Content and Brand Automation Systems</title>
     <meta
       name="description"
-      content="Silent Studio is a visual design service for brands that need sophisticated systems, darker editorial presence, and image-led digital experiences."
+      content="Silent Studio builds AI Content and Brand Automation Systems with reusable templates, structured workflows, and automation layers for teams that need more output without losing consistency, quality, or control."
     />
-    <meta property="og:title" content="Silent Studio V3 | Visual Design Systems" />
+    <meta property="og:title" content="Silent Studio | AI Content and Brand Automation Systems" />
     <meta
       property="og:description"
-      content="A dark, minimalist 12-column layout inspired by Vignelli principles with full-bleed imagery, fixed-width copy, and refined visual hierarchy."
+      content="Structured brand production for teams that need more output without compromise: reusable templates, workflow logic, and automation systems designed to scale."
     />
     <meta name="theme-color" content="#0a0a0a" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,20 +28,17 @@
               ivory: "#f3eee6",
               mist: "rgba(243,238,230,0.72)",
               ash: "rgba(243,238,230,0.48)",
-              signal: "#ff2026",
+              signal: "#ff2026"
             },
             fontFamily: {
-              sans: ['"Helvetica Neue"', "Helvetica", "Arial", "sans-serif"],
-            },
-            boxShadow: {
-              panel: "0 24px 80px rgba(0, 0, 0, 0.34)",
+              sans: ['"Helvetica Neue"', "Helvetica", "Arial", "sans-serif"]
             },
             letterSpacing: {
               display: "-0.06em",
-              tightest: "-0.08em",
-            },
-          },
-        },
+              tightest: "-0.08em"
+            }
+          }
+        }
       };
     </script>
     <style type="text/tailwindcss">
@@ -76,6 +73,10 @@
           @apply max-w-[34rem];
         }
 
+        .copy-measure {
+          @apply max-w-[30rem];
+        }
+
         .section-rule {
           @apply border-t border-softline;
         }
@@ -98,15 +99,15 @@
         }
 
         .display {
-          @apply text-[clamp(3rem,6vw,6.75rem)] font-semibold leading-[0.92] tracking-display text-ivory;
+          @apply text-[clamp(3rem,6.2vw,7rem)] font-semibold leading-[0.9] tracking-display text-ivory;
         }
 
         .section-title {
-          @apply text-[clamp(1.9rem,3vw,3.3rem)] font-semibold leading-[0.98] tracking-tightest text-ivory;
+          @apply text-[clamp(1.95rem,3vw,3.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-ivory;
         }
 
         .lede {
-          @apply text-[1.05rem] leading-8 text-mist md:text-[1.12rem];
+          @apply text-[1.04rem] leading-8 text-mist md:text-[1.12rem];
         }
 
         .meta-card {
@@ -119,7 +120,7 @@
 
         .editorial-image img {
           @apply h-full w-full object-cover grayscale;
-          filter: grayscale(1) contrast(1.02) brightness(0.8);
+          filter: grayscale(1) contrast(1.03) brightness(0.78);
         }
 
         .is-scrolled {
@@ -146,10 +147,7 @@
       >Skip to content</a
     >
 
-    <header
-      class="fixed inset-x-0 top-0 z-50 border-b border-softline/80 transition-all duration-300"
-      data-site-header
-    >
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-softline/80 transition-all duration-300" data-site-header>
       <div class="frame">
         <div class="grid-12 min-h-[78px] items-center">
           <a href="#main" class="col-span-6 md:col-span-3 flex items-center">
@@ -167,26 +165,27 @@
             aria-controls="site-nav"
             data-nav-toggle
           >
-            <span class="inline-flex items-center rounded-full border border-line px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ivory"
-              >Menu</span
-            >
+            <span class="inline-flex items-center rounded-full border border-line px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ivory">
+              Menu
+            </span>
           </button>
 
-          <div class="col-span-12 hidden items-center justify-between gap-8 md:col-span-9 md:flex" data-nav-wrap id="site-nav">
+          <div class="col-span-12 hidden items-center justify-between gap-8 md:col-span-9 md:flex" id="site-nav">
             <nav aria-label="Primary">
               <ul class="flex flex-wrap items-center gap-6 text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-ash">
                 <li><a class="transition hover:text-ivory" href="#main">Home</a></li>
-                <li><a class="transition hover:text-ivory" href="#services">Services</a></li>
+                <li><a class="transition hover:text-ivory" href="#problem">Problem</a></li>
+                <li><a class="transition hover:text-ivory" href="#solution">Solution</a></li>
+                <li><a class="transition hover:text-ivory" href="#process">Process</a></li>
                 <li><a class="transition hover:text-ivory" href="#capabilities">Capabilities</a></li>
-                <li><a class="transition hover:text-ivory" href="#audience">Audience</a></li>
                 <li><a class="transition hover:text-ivory" href="#contact">Contact</a></li>
               </ul>
             </nav>
 
             <a
-              href="mailto:hello@silentstudio.design"
+              href="#process"
               class="inline-flex min-h-[46px] items-center justify-center border border-ivory px-5 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:border-signal hover:bg-signal hover:text-ivory"
-              >Start a project</a
+              >See how it works</a
             >
           </div>
         </div>
@@ -197,9 +196,10 @@
           <nav aria-label="Mobile">
             <ul class="grid gap-4 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ash">
               <li><a class="transition hover:text-ivory" href="#main">Home</a></li>
-              <li><a class="transition hover:text-ivory" href="#services">Services</a></li>
+              <li><a class="transition hover:text-ivory" href="#problem">Problem</a></li>
+              <li><a class="transition hover:text-ivory" href="#solution">Solution</a></li>
+              <li><a class="transition hover:text-ivory" href="#process">Process</a></li>
               <li><a class="transition hover:text-ivory" href="#capabilities">Capabilities</a></li>
-              <li><a class="transition hover:text-ivory" href="#audience">Audience</a></li>
               <li><a class="transition hover:text-ivory" href="#contact">Contact</a></li>
             </ul>
           </nav>
@@ -211,26 +211,24 @@
       <section class="min-h-screen border-b border-softline">
         <div class="grid-12 frame min-h-[calc(100vh-78px)] items-stretch">
           <div class="editorial-image col-span-12 min-h-[52vh] md:col-span-7 md:min-h-[calc(100vh-78px)] reveal">
-            <img src="materials/backgrounds_.jpg" alt="Atmospheric black and white landscape" class="object-[44%_center]" />
+            <img src="materials/backgrounds_.jpg" alt="Monochrome landscape for Silent Studio" class="object-[44%_center]" />
             <div class="absolute left-0 top-0 h-28 w-28 bg-signal md:h-40 md:w-40"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/20 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/25 via-transparent to-transparent"></div>
           </div>
 
           <div class="col-span-12 flex items-center md:col-span-5">
             <div class="copy-lockup reveal px-0 py-14 md:px-10 md:py-24 xl:px-16">
-              <span class="eyebrow">Silent Studio V3</span>
-              <h1 class="display mt-8">
-                Sophisticated visual design systems for brands that need silence, structure, and impact.
-              </h1>
+              <span class="eyebrow">AI Content Systems</span>
+              <h1 class="display mt-8">AI content systems for brands that need speed without compromise.</h1>
               <p class="lede mt-8">
-                This is a visual design service built around editorial composition, rigorous hierarchy, and image-led
-                digital experiences. We design brands and websites that feel considered at every scale, not assembled.
+                Silent Studio creates structured workflows, reusable templates, and automation layers that help teams
+                produce more while keeping the brand sharp, consistent, and controlled.
               </p>
               <div class="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a
-                  href="mailto:hello@silentstudio.design"
+                  href="#process"
                   class="inline-flex min-h-[52px] items-center justify-center bg-ivory px-6 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-obsidian transition hover:bg-signal hover:text-ivory"
-                  >Start a project</a
+                  >See how it works</a
                 >
                 <a
                   href="#capabilities"
@@ -240,13 +238,202 @@
               </div>
               <div class="mt-12 grid grid-cols-2 gap-6 border-t border-softline pt-6 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-ash">
                 <div>
-                  <span class="block text-ivory">12-column structure</span>
-                  <span class="mt-2 block">Full bleed layout system</span>
+                  <span class="block text-ivory">Structured production</span>
+                  <span class="mt-2 block">Reusable systems and templates</span>
                 </div>
                 <div>
-                  <span class="block text-ivory">50/50 image to text</span>
-                  <span class="mt-2 block">Visual-first composition</span>
+                  <span class="block text-ivory">Controlled scale</span>
+                  <span class="mt-2 block">Consistency without drift</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="frame py-16 md:py-24">
+          <div class="grid-12 items-start">
+            <div class="col-span-12 md:col-span-4 reveal">
+              <span class="eyebrow">Introduction</span>
+            </div>
+            <div class="col-span-12 md:col-span-8 reveal">
+              <p class="max-w-[54rem] text-[1.35rem] leading-[1.58] tracking-[-0.03em] text-ivory md:text-[1.72rem]">
+                Content demand keeps growing. Most teams respond by adding more tools, more manual steps, and more
+                last-minute production. The result is slower output, uneven quality, and brand inconsistency across
+                channels.
+              </p>
+              <p class="copy-measure lede mt-8">
+                Silent Studio builds systems that bring order to that process. Not random content. Not one-off
+                automation. Structured brand production designed to scale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="problem" class="section-rule">
+        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
+          <div class="col-span-12 md:col-span-5 reveal">
+            <div class="copy-lockup pr-0 md:pr-10 xl:pr-16">
+              <span class="eyebrow">Problem</span>
+              <h2 class="section-title mt-8">More content should not mean less control.</h2>
+              <p class="lede mt-8">
+                Many teams are dealing with the same friction as content volume rises and execution becomes harder to
+                manage across formats, channels, and internal workflows.
+              </p>
+              <p class="mt-8 text-base leading-8 text-mist">
+                As volume increases, consistency usually drops. What starts as a workflow issue becomes a brand issue.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-span-12 md:col-span-7 reveal">
+            <div class="grid gap-px bg-softline md:grid-cols-2">
+              <article class="bg-obsidian p-8 md:p-10">
+                <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">01</span>
+                <p class="mt-6 text-[1.2rem] leading-8 text-ivory">Content production is too slow.</p>
+              </article>
+              <article class="bg-obsidian p-8 md:p-10">
+                <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">02</span>
+                <p class="mt-6 text-[1.2rem] leading-8 text-ivory">Brand execution shifts from asset to asset.</p>
+              </article>
+              <article class="bg-obsidian p-8 md:p-10">
+                <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">03</span>
+                <p class="mt-6 text-[1.2rem] leading-8 text-ivory">Teams rely on too many disconnected tools.</p>
+              </article>
+              <article class="bg-obsidian p-8 md:p-10">
+                <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">04</span>
+                <p class="mt-6 text-[1.2rem] leading-8 text-ivory">Repetitive tasks absorb time that should go into better work.</p>
+              </article>
+              <article class="bg-obsidian p-8 md:p-10">
+                <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">05</span>
+                <p class="mt-6 text-[1.2rem] leading-8 text-ivory">Scaling across formats and channels creates quality issues.</p>
+              </article>
+              <article class="bg-obsidian p-8 md:p-10">
+                <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">06</span>
+                <p class="mt-6 text-[1.2rem] leading-8 text-ivory">Internal teams need more output, but not more chaos.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution" class="section-rule">
+        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
+          <div class="col-span-12 md:col-span-6 reveal md:order-2">
+            <div class="copy-lockup md:ml-auto md:pl-10 xl:pl-16">
+              <span class="eyebrow">Solution</span>
+              <h2 class="section-title mt-8">A system built for scale, consistency, and speed.</h2>
+              <p class="lede mt-8">
+                Silent Studio designs Artificial Intelligence content and brand automation systems that turn production
+                into a more structured, repeatable process.
+              </p>
+              <p class="mt-8 text-base leading-8 text-mist">
+                The goal is simple: help teams move faster without lowering the standard.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-span-12 md:col-span-6 reveal md:order-1">
+            <div class="editorial-image aspect-[4/5] md:aspect-[5/6]">
+              <img src="materials/backgrounds_.jpg" alt="Structured system imagery" class="object-[32%_center]" />
+              <div class="absolute bottom-0 right-0 h-24 w-24 bg-signal md:h-32 md:w-32"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="frame pb-16 md:pb-24 xl:pb-28">
+          <div class="grid-12">
+            <div class="col-span-12 md:col-span-8 md:col-start-5">
+              <div class="grid gap-px bg-softline reveal md:grid-cols-2 xl:grid-cols-3">
+                <article class="bg-obsidian p-7"><p class="text-sm uppercase tracking-[0.22em] text-ash">Reusable design templates</p></article>
+                <article class="bg-obsidian p-7"><p class="text-sm uppercase tracking-[0.22em] text-ash">Artificial Intelligence-assisted content generation</p></article>
+                <article class="bg-obsidian p-7"><p class="text-sm uppercase tracking-[0.22em] text-ash">Modular creative systems</p></article>
+                <article class="bg-obsidian p-7"><p class="text-sm uppercase tracking-[0.22em] text-ash">Workflow design across tools and teams</p></article>
+                <article class="bg-obsidian p-7"><p class="text-sm uppercase tracking-[0.22em] text-ash">Approval-aware production logic</p></article>
+                <article class="bg-obsidian p-7"><p class="text-sm uppercase tracking-[0.22em] text-ash">Analytics and dashboard layers</p></article>
+                <article class="bg-obsidian p-7 md:col-span-2 xl:col-span-3"><p class="text-sm uppercase tracking-[0.22em] text-ash">Future-ready foundations for custom trained agents</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="section-rule relative overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="materials/backgrounds_.jpg" alt="" class="h-full w-full object-cover grayscale opacity-20" />
+          <div class="absolute inset-0 bg-obsidian/84"></div>
+        </div>
+
+        <div class="frame relative py-20 md:py-28 xl:py-32">
+          <div class="grid-12 gap-y-12">
+            <div class="col-span-12 md:col-span-5 reveal">
+              <span class="eyebrow">Process</span>
+              <h2 class="section-title mt-8">Designed as a system, not a shortcut.</h2>
+              <p class="lede mt-8 copy-measure">
+                The work is structured to move from diagnosis to repeatable execution, so the final system is usable,
+                not theoretical.
+              </p>
+            </div>
+
+            <div class="col-span-12 md:col-span-7">
+              <div class="grid gap-px bg-softline reveal">
+                <article class="grid gap-6 bg-obsidian/80 p-8 backdrop-blur-sm md:grid-cols-[132px_1fr] md:gap-8 md:p-10">
+                  <span class="grid content-center gap-2 self-center"><span class="text-[2rem] font-bold leading-none tracking-[0.18em] text-ivory">01</span><span class="text-[0.92rem] font-semibold uppercase tracking-[0.26em] text-signal">Audit</span></span>
+                  <p class="text-base leading-8 text-mist">Review the current content workflow, brand assets, bottlenecks, and points of inconsistency.</p>
+                </article>
+                <article class="grid gap-6 bg-obsidian/80 p-8 backdrop-blur-sm md:grid-cols-[132px_1fr] md:gap-8 md:p-10">
+                  <span class="grid content-center gap-2 self-center"><span class="text-[2rem] font-bold leading-none tracking-[0.18em] text-ivory">02</span><span class="text-[0.92rem] font-semibold uppercase tracking-[0.26em] text-signal">Structure</span></span>
+                  <p class="text-base leading-8 text-mist">Define the system: templates, content logic, visual rules, production steps, and automation opportunities.</p>
+                </article>
+                <article class="grid gap-6 bg-obsidian/80 p-8 backdrop-blur-sm md:grid-cols-[132px_1fr] md:gap-8 md:p-10">
+                  <span class="grid content-center gap-2 self-center"><span class="text-[2rem] font-bold leading-none tracking-[0.18em] text-ivory">03</span><span class="text-[0.92rem] font-semibold uppercase tracking-[0.26em] text-signal">Build</span></span>
+                  <p class="text-base leading-8 text-mist">Create the working components, from branded templates and asset structures to automation flows and content patterns.</p>
+                </article>
+                <article class="grid gap-6 bg-obsidian/80 p-8 backdrop-blur-sm md:grid-cols-[132px_1fr] md:gap-8 md:p-10">
+                  <span class="grid content-center gap-2 self-center"><span class="text-[2rem] font-bold leading-none tracking-[0.18em] text-ivory">04</span><span class="text-[0.92rem] font-semibold uppercase tracking-[0.26em] text-signal">Refine</span></span>
+                  <p class="text-base leading-8 text-mist">Test output, improve consistency, remove friction, and adjust the system for real use.</p>
+                </article>
+                <article class="grid gap-6 bg-obsidian/80 p-8 backdrop-blur-sm md:grid-cols-[132px_1fr] md:gap-8 md:p-10">
+                  <span class="grid content-center gap-2 self-center"><span class="text-[2rem] font-bold leading-none tracking-[0.18em] text-ivory">05</span><span class="text-[0.92rem] font-semibold uppercase tracking-[0.26em] text-signal">Scale</span></span>
+                  <p class="text-base leading-8 text-mist">Support broader rollout across campaigns, channels, and teams with a setup that stays usable over time.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
+          <div class="col-span-12 md:col-span-6 reveal">
+            <div class="editorial-image aspect-[4/5] md:aspect-[1/1]">
+              <img src="assets/img/placeholders/landing-spot.svg" alt="System diagram style composition" class="object-cover" />
+              <div class="absolute inset-0 bg-black/38 mix-blend-multiply"></div>
+            </div>
+          </div>
+
+          <div class="col-span-12 flex items-center md:col-span-6 reveal">
+            <div class="copy-lockup pl-0 md:pl-10 xl:pl-16">
+              <span class="eyebrow">Why it works</span>
+              <h2 class="section-title mt-8">Because good systems protect good brands.</h2>
+              <p class="lede mt-8">
+                The strongest creative operations are not built on speed alone. They are built on clear standards,
+                reusable structures, and production logic that reduces drift.
+              </p>
+              <p class="lede mt-8">
+                Silent Studio combines brand thinking, design systems, and modern Artificial Intelligence workflows to
+                help teams produce at higher volume while keeping the work aligned.
+              </p>
+              <div class="mt-10 border-t border-softline pt-6 text-sm leading-8 text-mist">
+                <p>This is where craft and automation meet:</p>
+                <p>visual consistency</p>
+                <p>faster turnaround</p>
+                <p>cleaner workflows</p>
+                <p>fewer repetitive production steps</p>
+                <p>stronger control across outputs</p>
+                <p>more room for judgment where it matters</p>
               </div>
             </div>
           </div>
@@ -254,216 +441,50 @@
       </section>
 
       <section id="capabilities" class="section-rule">
-        <div class="frame py-16 md:py-24">
-          <div class="grid-12 items-start">
-            <div class="col-span-12 md:col-span-4 reveal">
-              <span class="eyebrow">Direction</span>
-            </div>
-            <div class="col-span-12 md:col-span-8 reveal">
-              <p class="max-w-[54rem] text-[1.35rem] leading-[1.6] tracking-[-0.03em] text-ivory md:text-[1.7rem]">
-                Inspired by Massimo Vignelli’s discipline, this layout uses strict alignment, fixed copy widths, bold
-                negative space, and restrained accent moments to create a cleaner, more elevated digital presence.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-rule">
-        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
-          <div class="col-span-12 flex items-center md:col-span-6 reveal">
-            <div class="copy-lockup pr-0 md:pr-10 xl:pr-16">
-              <span class="eyebrow">Visual systems</span>
-              <h2 class="section-title mt-8">Identity, web, and campaign structures that feel deliberate rather than decorated.</h2>
-              <p class="lede mt-8">
-                We define the rules behind type, image treatment, spacing, and composition so the brand stays coherent
-                across websites, launch assets, and recurring production needs.
-              </p>
-              <div class="mt-10 grid gap-4 border-t border-softline pt-6 text-sm leading-7 text-mist">
-                <p>Brand architecture and visual systems</p>
-                <p>Website art direction and layout language</p>
-                <p>Editorial grids for campaigns and content</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-span-12 md:col-span-6 reveal">
-            <div class="editorial-image aspect-[4/5] md:aspect-[5/6]">
-              <img src="materials/backgrounds_.jpg" alt="Monochrome landscape study" class="object-[68%_center]" />
-              <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-obsidian/50"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-rule">
-        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
-          <div class="col-span-12 md:col-span-6 reveal md:order-2">
-            <div class="copy-lockup md:ml-auto md:pl-10 xl:pl-16">
-              <span class="eyebrow">Image-led web design</span>
-              <h2 class="section-title mt-8">A 50/50 rhythm where photography carries as much weight as the words.</h2>
-              <p class="lede mt-8">
-                The site is designed like a visual document: full-width imagery, controlled text columns, and sections
-                that breathe. The mood is dark, elegant, and highly reduced, with contrast used sparingly.
-              </p>
-              <div class="mt-10 grid grid-cols-2 gap-4 text-sm text-mist">
-                <div class="meta-card">
-                  <span class="block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">Tone</span>
-                  <p class="mt-4 leading-7">Sophisticated, high-end, and quiet.</p>
-                </div>
-                <div class="meta-card">
-                  <span class="block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">Principle</span>
-                  <p class="mt-4 leading-7">Minimal forms with precise hierarchy.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-span-12 md:col-span-6 reveal md:order-1">
-            <div class="editorial-image aspect-[4/5] md:aspect-[5/6]">
-              <img src="materials/backgrounds_.jpg" alt="Monochrome terrain detail" class="object-[30%_center]" />
-              <div class="absolute bottom-0 right-0 h-24 w-24 bg-signal md:h-32 md:w-32"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-rule">
         <div class="frame py-16 md:py-24 xl:py-28">
           <div class="grid-12 items-start">
             <div class="col-span-12 md:col-span-4 reveal">
-              <span class="eyebrow">Selected capabilities</span>
+              <span class="eyebrow">Capabilities</span>
+              <h2 class="section-title mt-8">What Silent Studio helps build</h2>
             </div>
             <div class="col-span-12 md:col-span-8">
               <div class="grid gap-px bg-softline reveal md:grid-cols-2">
                 <article class="bg-obsidian p-8 md:p-10">
-                  <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">01</span>
-                  <h3 class="mt-6 text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Brand systems</h3>
+                  <h3 class="text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">AI Content Systems</h3>
                   <p class="mt-4 max-w-[26rem] text-base leading-8 text-mist">
-                    Typography, color hierarchy, image rules, and a cohesive visual language designed for repetition.
+                    Structured approaches to generating content at scale while keeping output aligned with the brand.
                   </p>
                 </article>
                 <article class="bg-obsidian p-8 md:p-10">
-                  <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">02</span>
-                  <h3 class="mt-6 text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Website design</h3>
+                  <h3 class="text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Brand Automation</h3>
                   <p class="mt-4 max-w-[26rem] text-base leading-8 text-mist">
-                    Full-bleed layouts, editorial pacing, and elegant interface systems that foreground visual taste.
+                    Workflow layers that reduce manual repetition and connect creative production more intelligently.
                   </p>
                 </article>
                 <article class="bg-obsidian p-8 md:p-10">
-                  <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">03</span>
-                  <h3 class="mt-6 text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Campaign design</h3>
+                  <h3 class="text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Design Templates</h3>
                   <p class="mt-4 max-w-[26rem] text-base leading-8 text-mist">
-                    Structured launch assets and visual systems that stay sharp across multiple channels and formats.
+                    Reusable assets and systems built for speed, consistency, and easier handoff.
                   </p>
                 </article>
                 <article class="bg-obsidian p-8 md:p-10">
-                  <span class="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ash">04</span>
-                  <h3 class="mt-6 text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Creative direction</h3>
+                  <h3 class="text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Marketing Workflows</h3>
                   <p class="mt-4 max-w-[26rem] text-base leading-8 text-mist">
-                    Refinement of mood, image selection, composition, and design judgment for brands that need more than polish.
+                    Clearer production paths across teams, channels, formats, and update cycles.
                   </p>
                 </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" class="section-rule relative overflow-hidden">
-        <div class="absolute inset-0">
-          <img
-            src="materials/backgrounds_.jpg"
-            alt=""
-            class="h-full w-full object-cover grayscale opacity-20"
-          />
-          <div class="absolute inset-0 bg-obsidian/82"></div>
-          <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-obsidian to-transparent"></div>
-        </div>
-
-        <div class="frame relative py-20 md:py-28 xl:py-32">
-          <div class="grid-12 gap-y-12">
-            <div class="col-span-12 md:col-span-5 reveal">
-              <span class="eyebrow">Services</span>
-              <h2 class="section-title mt-8 max-w-[11ch]">Three focused ways to build a sharper visual presence.</h2>
-              <p class="lede mt-8 max-w-[30rem]">
-                Each service is structured around clear visual outcomes: stronger systems, more refined websites, and
-                campaign design that carries the same level of taste from hero image to final detail.
-              </p>
-              <a
-                href="mailto:hello@silentstudio.design?subject=Silent%20Studio%20services"
-                class="mt-10 inline-flex min-h-[50px] items-center justify-center border border-ivory px-6 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:border-signal hover:bg-signal hover:text-ivory"
-                >Discuss services</a
-              >
-            </div>
-
-            <div class="col-span-12 md:col-span-7">
-              <div class="grid gap-px bg-softline reveal md:grid-cols-3">
-                <article class="bg-obsidian/80 p-8 backdrop-blur-sm md:p-9">
-                  <span class="eyebrow !gap-0 !text-[0.68rem] before:!mr-3">01</span>
-                  <h3 class="mt-6 text-[1.45rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Brand systems</h3>
-                  <ul class="mt-6 grid gap-3 text-sm leading-7 text-mist">
-                    <li>Typography and hierarchy rules</li>
-                    <li>Image direction and tonal consistency</li>
-                    <li>Visual kits for repeatable execution</li>
-                  </ul>
-                  <a class="mt-8 inline-flex text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal" href="mailto:hello@silentstudio.design?subject=Brand%20systems"
-                    >Discuss brand systems</a
-                  >
+                <article class="bg-obsidian p-8 md:p-10">
+                  <h3 class="text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Analytics Layer</h3>
+                  <p class="mt-4 max-w-[26rem] text-base leading-8 text-mist">
+                    Dashboards and measurement structures that help teams see what is being produced and how the system is performing.
+                  </p>
                 </article>
-
-                <article class="bg-obsidian/80 p-8 backdrop-blur-sm md:p-9">
-                  <span class="eyebrow !gap-0 !text-[0.68rem] before:!mr-3">02</span>
-                  <h3 class="mt-6 text-[1.45rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Website design</h3>
-                  <ul class="mt-6 grid gap-3 text-sm leading-7 text-mist">
-                    <li>Full-bleed editorial layouts</li>
-                    <li>Grid systems with fixed copy width</li>
-                    <li>Dark luxury art direction</li>
-                  </ul>
-                  <a class="mt-8 inline-flex text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal" href="#capabilities"
-                    >View website capabilities</a
-                  >
+                <article class="bg-obsidian p-8 md:p-10">
+                  <h3 class="text-[1.5rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Future Extensions</h3>
+                  <p class="mt-4 max-w-[26rem] text-base leading-8 text-mist">
+                    Foundations for more advanced automations, including custom trained agents where relevant.
+                  </p>
                 </article>
-
-                <article class="bg-obsidian/80 p-8 backdrop-blur-sm md:p-9">
-                  <span class="eyebrow !gap-0 !text-[0.68rem] before:!mr-3">03</span>
-                  <h3 class="mt-6 text-[1.45rem] font-semibold leading-tight tracking-[-0.05em] text-ivory">Campaign direction</h3>
-                  <ul class="mt-6 grid gap-3 text-sm leading-7 text-mist">
-                    <li>Launch visuals and content systems</li>
-                    <li>Art direction for recurring assets</li>
-                    <li>Sharper presentation across channels</li>
-                  </ul>
-                  <a class="mt-8 inline-flex text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal" href="mailto:hello@silentstudio.design?subject=Campaign%20direction"
-                    >Start a conversation</a
-                  >
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="audience" class="section-rule">
-        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
-          <div class="col-span-12 md:col-span-6 reveal">
-            <div class="editorial-image aspect-[4/5] md:aspect-[1/1]">
-              <img src="assets/img/placeholders/landing-spot.svg" alt="Structured campaign design preview" class="object-cover" />
-              <div class="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
-            </div>
-          </div>
-
-          <div class="col-span-12 flex items-center md:col-span-6 reveal">
-            <div class="copy-lockup pl-0 md:pl-10 xl:pl-16">
-              <span class="eyebrow">Who this is for</span>
-              <h2 class="section-title mt-8">Brands that want a modern, elegant presence without visual noise or generic tech aesthetics.</h2>
-              <p class="lede mt-8">
-                This direction is especially strong for design-forward consultancies, cultural brands, creative studios,
-                and premium service companies that need visual authority without excess.
-              </p>
-              <div class="mt-10 border-t border-softline pt-6 text-sm leading-8 text-mist">
-                <p>Fixed-width copy for readability and restraint</p>
-                <p>Full-bleed sections that create cinematic pacing</p>
-                <p>Subtle contrast instead of heavy decoration</p>
               </div>
             </div>
           </div>
@@ -474,26 +495,59 @@
         <div class="frame py-16 md:py-24 xl:py-28">
           <div class="grid-12 items-end">
             <div class="col-span-12 md:col-span-7 reveal">
-              <span class="eyebrow">Next step</span>
-              <h2 class="mt-8 max-w-[13ch] text-[clamp(2.4rem,4.6vw,5rem)] font-semibold leading-[0.95] tracking-display text-ivory">
-                Build a site that feels quieter, sharper, and more memorable.
+              <span class="eyebrow">Proof</span>
+              <h2 class="section-title mt-8">Built for teams that need output and standards.</h2>
+              <p class="lede mt-8 copy-measure">
+                Silent Studio is grounded in real brand and production work: identity systems, campaign design, event
+                ecosystems, content workflows, template logic, and Artificial Intelligence-assisted creative pipelines.
+              </p>
+              <p class="mt-8 text-base leading-8 text-mist copy-measure">
+                The focus is not experimentation for its own sake. It is building production-ready systems that help
+                brands stay consistent while expanding what their teams can deliver.
+              </p>
+            </div>
+            <div class="col-span-12 md:col-span-5 reveal">
+              <div class="meta-card">
+                <span class="eyebrow">Selected work</span>
+                <p class="mt-6 text-base leading-8 text-mist">
+                  Keep this proof section restrained. It should signal operating depth and real production experience,
+                  not a hard sell.
+                </p>
+                <a
+                  href="mailto:hello@silentstudio.design?subject=Selected%20work"
+                  class="mt-8 inline-flex min-h-[50px] items-center justify-center border border-ivory px-6 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:border-signal hover:bg-signal hover:text-ivory"
+                  >View selected work</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="frame py-16 md:py-24 xl:py-28">
+          <div class="grid-12 items-end">
+            <div class="col-span-12 md:col-span-7 reveal">
+              <span class="eyebrow">Final CTA</span>
+              <h2 class="mt-8 max-w-[13ch] text-[clamp(2.45rem,4.8vw,5.2rem)] font-semibold leading-[0.95] tracking-display text-ivory">
+                Build a content system that can actually scale.
               </h2>
             </div>
             <div class="col-span-12 md:col-span-5 reveal">
-              <p class="copy-lockup lede">
-                Silent Studio V3 is now a distilled single-page direction focused on image, structure, and clarity,
-                with one refined system instead of multiple leftover project branches.
+              <p class="copy-measure lede">
+                If your team needs more output but cannot afford more inconsistency, Silent Studio can help design a
+                clearer, stronger production system.
               </p>
               <div class="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a
-                  href="mailto:hello@silentstudio.design"
+                  href="mailto:hello@silentstudio.design?subject=Start%20a%20project"
                   class="inline-flex min-h-[52px] items-center justify-center bg-signal px-6 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:bg-ivory hover:text-obsidian"
                   >Start a project</a
                 >
                 <a
-                  href="#services"
+                  href="mailto:hello@silentstudio.design"
                   class="inline-flex min-h-[52px] items-center justify-center border border-line px-6 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:border-ivory hover:bg-white/[0.04]"
-                  >Review services</a
+                  >Get in touch</a
                 >
               </div>
             </div>
@@ -522,8 +576,8 @@
           </div>
 
           <div class="col-span-12 md:col-span-6 md:col-start-7 reveal">
-            <p class="ml-auto max-w-[10ch] text-right text-[clamp(2.4rem,4.8vw,5.6rem)] font-semibold leading-[0.94] tracking-display text-ivory">
-              Quiet structure. Precise image systems. Memorable presence.
+            <p class="ml-auto max-w-[11ch] text-right text-[clamp(2.4rem,4.8vw,5.6rem)] font-semibold leading-[0.94] tracking-display text-ivory">
+              Structured output. Consistent brand control. Scalable production.
             </p>
           </div>
         </div>
@@ -531,16 +585,16 @@
         <div class="mt-14 grid-12 items-end border-t border-softline pt-6">
           <div class="col-span-12 md:col-span-4 reveal">
             <div class="grid gap-4 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ash">
-              <a class="transition hover:text-ivory" href="#services">Services</a>
+              <a class="transition hover:text-ivory" href="#problem">Problem</a>
+              <a class="transition hover:text-ivory" href="#solution">Solution</a>
+              <a class="transition hover:text-ivory" href="#process">Process</a>
               <a class="transition hover:text-ivory" href="#capabilities">Capabilities</a>
-              <a class="transition hover:text-ivory" href="#audience">Audience</a>
-              <a class="transition hover:text-ivory" href="mailto:hello@silentstudio.design">Contact</a>
               <a class="transition hover:text-ivory" href="mailto:hello@silentstudio.design">hello@silentstudio.design</a>
             </div>
           </div>
 
           <div class="col-span-12 mt-10 flex flex-col gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-ash md:col-span-4 md:col-start-9 md:mt-0 md:items-end">
-            <span>New York / Remote</span>
+            <span>USA-EST / Remote</span>
             <span>&copy; 2026 Silent Studio</span>
           </div>
         </div>
@@ -579,7 +633,7 @@
               }
             });
           },
-          { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
+          { threshold: 0.18 }
         );
 
         revealItems.forEach((item) => observer.observe(item));
