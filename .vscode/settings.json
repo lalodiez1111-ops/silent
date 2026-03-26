@@ -1,0 +1,21 @@
+{
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "materials/public_html": true,
+    "silent-studio-site": true,
+    "silent-studio-site.zip": true
+  },
+  "search.exclude": {
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "materials/public_html": true,
+    "silent-studio-site": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/node_modules/**": true,
+    "**/materials/public_html/**": true,
+    "**/silent-studio-site/**": true
+  }
+}

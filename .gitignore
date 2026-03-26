@@ -1,0 +1,18 @@
+.DS_Store
+
+# Common dependency and build output
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+.vercel/
+
+# Local editor and OS noise
+.vscode/.DS_Store
+Thumbs.db
+
+# Local archives and temporary exports
+*.log
+*.tmp
