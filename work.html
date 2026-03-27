@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-obsidian text-ivory">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silent Studio | Selected Work</title>
+    <meta
+      name="description"
+      content="Selected work from Silent Studio across brand systems, campaign production, and structured content operations."
+    />
+    <meta property="og:title" content="Silent Studio | Selected Work" />
+    <meta
+      property="og:description"
+      content="Selected projects shaped by consistency, workflow clarity, and real-world delivery."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              obsidian: "#0a0a0a",
+              carbon: "#111111",
+              graphite: "#171717",
+              line: "rgba(255,255,255,0.14)",
+              softline: "rgba(255,255,255,0.08)",
+              ivory: "#f3eee6",
+              mist: "rgba(243,238,230,0.72)",
+              ash: "rgba(243,238,230,0.48)",
+              signal: "#ff2026"
+            },
+            fontFamily: {
+              sans: ['"Helvetica Neue"', "Helvetica", "Arial", "sans-serif"]
+            },
+            letterSpacing: {
+              display: "-0.06em",
+              tightest: "-0.08em"
+            }
+          }
+        }
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          @apply bg-obsidian font-sans text-ivory antialiased;
+          background-image:
+            radial-gradient(circle at top left, rgba(255, 32, 38, 0.08), transparent 18rem),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18rem);
+        }
+
+        ::selection {
+          background: rgba(255, 32, 38, 0.88);
+          color: #f3eee6;
+        }
+      }
+
+      @layer components {
+        .frame {
+          @apply mx-auto w-[calc(100vw-2rem)] max-w-[1600px];
+        }
+
+        .grid-12 {
+          @apply grid grid-cols-12 gap-x-4 gap-y-10 md:gap-x-6 xl:gap-x-8;
+        }
+
+        .copy-lockup {
+          @apply max-w-[34rem];
+        }
+
+        .copy-measure {
+          @apply max-w-[30rem];
+        }
+
+        .section-rule {
+          @apply border-t border-softline;
+        }
+
+        .eyebrow {
+          @apply inline-flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-ash;
+        }
+
+        .eyebrow::before {
+          content: "";
+          @apply block h-px w-10 bg-signal;
+        }
+
+        .silent-mark {
+          @apply inline-flex items-center font-sans text-[1.28rem] font-extrabold uppercase tracking-[0.24em] text-ivory md:text-[1.45rem];
+        }
+
+        .silent-mark-angle {
+          @apply text-signal;
+        }
+
+        .display {
+          @apply text-[clamp(3rem,6.2vw,7rem)] font-semibold leading-[0.9] tracking-display text-ivory;
+        }
+
+        .section-title {
+          @apply text-[clamp(1.95rem,3vw,3.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-ivory;
+        }
+
+        .lede {
+          @apply text-[1.04rem] leading-8 text-mist md:text-[1.12rem];
+        }
+
+        .meta-card {
+          @apply border border-softline bg-white/[0.03] p-6 backdrop-blur-sm;
+        }
+
+        .editorial-image {
+          @apply relative overflow-hidden bg-graphite;
+        }
+
+        .editorial-image img {
+          @apply h-full w-full object-cover grayscale;
+          filter: grayscale(1) contrast(1.03) brightness(0.78);
+        }
+
+        .hero-field {
+          background:
+            radial-gradient(circle at 18% 18%, rgba(148, 0, 58, 0.22), transparent 26rem),
+            radial-gradient(circle at 82% 16%, rgba(222, 168, 155, 0.26), transparent 20rem),
+            radial-gradient(circle at 52% 42%, rgba(255, 248, 241, 0.34), transparent 28rem),
+            radial-gradient(circle at 14% 86%, rgba(194, 113, 104, 0.18), transparent 18rem),
+            linear-gradient(180deg, rgba(255, 252, 247, 0.96) 0%, rgba(234, 202, 168, 0.72) 42%, rgba(224, 142, 123, 0.26) 100%);
+        }
+
+        .hero-orb {
+          background:
+            radial-gradient(circle at 34% 34%, rgba(255,255,255,0.98), rgba(252,244,236,0.92) 34%, rgba(234, 202, 168, 0.48) 64%, rgba(148, 0, 58, 0.12) 100%);
+          box-shadow:
+            0 18px 60px rgba(86, 32, 32, 0.16),
+            inset 0 1px 0 rgba(255,255,255,0.76);
+        }
+
+        .hero-showcase {
+          box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.34),
+            0 0 0 1px rgba(255,255,255,0.08);
+        }
+
+        .hero-interactive {
+          --trail-x: 50%;
+          --trail-y: 34%;
+        }
+
+        .hero-trail {
+          background:
+            radial-gradient(circle at center, rgba(255, 250, 244, 0.42) 0%, rgba(255, 241, 226, 0.2) 28%, rgba(255, 232, 214, 0.08) 46%, transparent 68%);
+          filter: blur(14px);
+          left: var(--trail-x);
+          top: var(--trail-y);
+          opacity: 0.7;
+          mix-blend-mode: screen;
+          transform: translate3d(-50%, -50%, 0);
+          transition: transform 180ms ease-out, opacity 240ms ease-out;
+          will-change: transform, opacity;
+        }
+
+        .hero-trail-secondary {
+          background:
+            radial-gradient(circle at center, rgba(148, 0, 58, 0.12) 0%, rgba(224, 142, 123, 0.1) 34%, transparent 70%);
+          filter: blur(26px);
+          left: var(--trail-x);
+          top: var(--trail-y);
+          opacity: 0.56;
+          mix-blend-mode: multiply;
+          transform: translate3d(-50%, -50%, 0);
+          transition: transform 280ms ease-out, opacity 260ms ease-out;
+          will-change: transform, opacity;
+        }
+
+        .hero-interactive.is-idle .hero-trail,
+        .hero-interactive.is-idle .hero-trail-secondary {
+          opacity: 0.42;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-trail,
+          .hero-trail-secondary {
+            display: none;
+          }
+        }
+
+        .footer-field {
+          background:
+            radial-gradient(circle at 14% 18%, rgba(148, 0, 58, 0.14), transparent 24rem),
+            radial-gradient(circle at 84% 20%, rgba(222, 168, 155, 0.14), transparent 22rem),
+            radial-gradient(circle at 56% 68%, rgba(255, 248, 241, 0.08), transparent 24rem),
+            linear-gradient(180deg, rgba(58, 20, 24, 0.18) 0%, rgba(16, 14, 14, 0.1) 46%, rgba(10, 10, 10, 0) 100%);
+        }
+
+        .is-scrolled {
+          @apply bg-obsidian/90 backdrop-blur-xl;
+        }
+
+        .reveal {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-signal focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ivory"
+      >Skip to content</a
+    >
+
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-softline/80 transition-all duration-300" data-site-header>
+      <div class="frame">
+        <div class="grid-12 min-h-[78px] items-center">
+          <a href="/index.html" class="col-span-6 md:col-span-3 flex items-center">
+            <span class="silent-mark" aria-label="Silent">
+              <span class="silent-mark-angle">&lt;</span>
+              <span class="mx-[0.42rem]">Silent</span>
+              <span class="silent-mark-angle">&gt;</span>
+            </span>
+          </a>
+
+          <button
+            type="button"
+            class="col-span-6 flex justify-end md:hidden"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            data-nav-toggle
+          >
+            <span class="inline-flex items-center rounded-full border border-line px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-ivory">
+              Menu
+            </span>
+          </button>
+
+          <div class="col-span-12 hidden items-center justify-between gap-8 md:col-span-9 md:flex" id="site-nav">
+            <nav aria-label="Primary">
+              <ul class="flex flex-wrap items-center gap-6 text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-ash">
+                <li><a class="transition hover:text-ivory" href="/index.html">Home</a></li>
+                <li><a class="text-ivory" href="/work.html" aria-current="page">Work</a></li>
+                <li><a class="transition hover:text-ivory" href="/index.html#problem">Problem</a></li>
+                <li><a class="transition hover:text-ivory" href="/index.html#solution">Solution</a></li>
+                <li><a class="transition hover:text-ivory" href="/index.html#process">Process</a></li>
+                <li><a class="transition hover:text-ivory" href="/index.html#capabilities">Capabilities</a></li>
+                <li><a class="transition hover:text-ivory" href="/index.html#contact">Contact</a></li>
+              </ul>
+            </nav>
+
+            <a
+              href="/index.html#process"
+              class="inline-flex min-h-[46px] items-center justify-center border border-ivory px-5 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:border-signal hover:bg-signal hover:text-ivory"
+              >See how it works</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden border-t border-softline bg-carbon md:hidden" data-mobile-panel>
+        <div class="frame py-6">
+          <nav aria-label="Mobile">
+            <ul class="grid gap-4 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ash">
+              <li><a class="transition hover:text-ivory" href="/index.html">Home</a></li>
+              <li><a class="text-ivory" href="/work.html" aria-current="page">Work</a></li>
+              <li><a class="transition hover:text-ivory" href="/index.html#problem">Problem</a></li>
+              <li><a class="transition hover:text-ivory" href="/index.html#solution">Solution</a></li>
+              <li><a class="transition hover:text-ivory" href="/index.html#process">Process</a></li>
+              <li><a class="transition hover:text-ivory" href="/index.html#capabilities">Capabilities</a></li>
+              <li><a class="transition hover:text-ivory" href="/index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="pt-[78px]">
+      <section class="hero-interactive is-idle relative overflow-hidden border-b border-softline" data-hero-interactive>
+        <div class="hero-field absolute inset-0"></div>
+        <div class="hero-trail pointer-events-none absolute h-[34rem] w-[34rem] rounded-full"></div>
+        <div class="hero-trail-secondary pointer-events-none absolute h-[44rem] w-[44rem] rounded-full"></div>
+        <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-obsidian/28 to-obsidian"></div>
+        <div class="absolute left-[-8rem] top-[8rem] h-[18rem] w-[18rem] rounded-full bg-[#94003a]/14 blur-3xl md:h-[28rem] md:w-[28rem]"></div>
+        <div class="absolute right-[-6rem] top-[4rem] h-[16rem] w-[16rem] rounded-full bg-[#e0a89b]/18 blur-3xl md:h-[24rem] md:w-[24rem]"></div>
+
+        <div class="frame relative py-14 md:py-20 xl:py-24">
+          <div class="mx-auto flex max-w-[60rem] flex-col items-center text-center reveal">
+            <span class="eyebrow text-[rgba(10,10,10,0.62)] before:bg-[rgba(10,10,10,0.52)]">Selected Work</span>
+            <div class="hero-orb mt-10 flex h-16 w-16 items-center justify-center rounded-[1.35rem] md:h-20 md:w-20">
+              <span class="silent-mark !text-[0.92rem] !tracking-[0.18em] md:!text-[1.04rem]" aria-hidden="true">
+                <span class="silent-mark-angle">&lt;</span>
+                <span class="mx-[0.22rem]">S</span>
+                <span class="silent-mark-angle">&gt;</span>
+              </span>
+            </div>
+            <h1 class="mt-8 max-w-[12ch] text-[clamp(3rem,6vw,5.6rem)] font-semibold leading-[0.92] tracking-[-0.06em] text-[#101010]">
+              Work built for stronger output, clearer standards, and real scale.
+            </h1>
+            <p class="mt-6 max-w-[42rem] text-[1rem] leading-8 text-[rgba(10,10,10,0.76)] md:text-[1.08rem]">
+              A curated selection of brand, campaign, and production work shaped by consistency, workflow clarity,
+              and real-world delivery.
+            </p>
+          </div>
+
+          <div class="hero-showcase editorial-image relative mx-auto mt-14 aspect-[16/10] w-full max-w-[82rem] overflow-hidden rounded-[2rem] border border-white/12 reveal md:mt-16">
+            <img
+              src="materials/backgrounds_.jpg"
+              alt="Abstract monochrome composition representing Silent Studio selected work"
+              class="object-[50%_center]"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/8 via-obsidian/16 to-obsidian/72"></div>
+            <div class="absolute inset-x-[5%] top-[10%] flex items-start justify-between gap-6">
+              <div class="rounded-full border border-white/14 bg-obsidian/56 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ash backdrop-blur">
+                Selected Work
+              </div>
+              <div class="hidden rounded-full border border-white/14 bg-obsidian/56 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ash backdrop-blur md:block">
+                Silent Studio
+              </div>
+            </div>
+            <div class="absolute inset-x-[5%] bottom-[8%] grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(18rem,0.95fr)]">
+              <div class="rounded-[1.5rem] border border-white/10 bg-obsidian/62 p-6 backdrop-blur-md md:p-8">
+                <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-ash">Project Focus</p>
+                <p class="mt-4 max-w-[20ch] text-[clamp(1.6rem,3vw,2.9rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ivory">
+                  Different outputs, the same discipline underneath.
+                </p>
+              </div>
+              <div class="rounded-[1.5rem] border border-white/10 bg-obsidian/62 p-6 backdrop-blur-md md:p-8">
+                <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-ash">What the work shows</p>
+                <ul class="mt-4 grid gap-3 text-[0.94rem] leading-7 text-mist">
+                  <li>Consistency under real production pressure</li>
+                  <li>Reusable structures across formats and teams</li>
+                  <li>Delivery shaped by clarity and control</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="frame py-16 md:py-24">
+          <div class="grid-12 items-start">
+            <div class="col-span-12 md:col-span-4 reveal">
+              <span class="eyebrow">Introduction</span>
+            </div>
+            <div class="col-span-12 md:col-span-8 reveal">
+              <h2 class="section-title max-w-[16ch]">These projects are selected for what they reveal behind the surface.</h2>
+              <p class="copy-measure lede mt-8">
+                Not only visual quality, but the structure underneath it: systems thinking, repeatability, production
+                logic, and delivery under real constraints.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-work" class="section-rule">
+        <div class="frame py-16 md:py-24 xl:py-28">
+          <div class="grid gap-px bg-softline reveal md:grid-cols-2">
+            <article class="bg-obsidian p-8 md:p-10">
+              <div class="editorial-image aspect-square">
+                <img src="assets/img/placeholders/landing-spot.svg" alt="Landing Spot project image" class="object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/35 via-transparent to-transparent"></div>
+              </div>
+              <div class="mt-8">
+                <span class="eyebrow">Landing Spot</span>
+                <h3 class="mt-6 text-[clamp(1.55rem,2.2vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ivory">Generative brand system built for scalable campaign output</h3>
+                <p class="mt-6 text-[1rem] leading-8 text-mist">
+                  A concept brand created to test how controlled visual systems, prompt logic, and finishing workflows
+                  can support high-volume output without brand drift.
+                </p>
+                <p class="mt-6 text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ash">
+                  Brand system / assisted production / campaign assets / visual consistency
+                </p>
+                <span class="mt-6 inline-flex text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal">View Case Study</span>
+              </div>
+            </article>
+
+            <article class="bg-obsidian p-8 md:p-10">
+              <div class="editorial-image aspect-square">
+                <img src="materials/backgrounds_.jpg" alt="Breakthrough Conference project image" class="object-[50%_45%]" />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/45 via-transparent to-transparent"></div>
+              </div>
+              <div class="mt-8">
+                <span class="eyebrow">Breakthrough Conference</span>
+                <h3 class="mt-6 text-[clamp(1.55rem,2.2vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ivory">Event identity built for speed, scale, and constant change</h3>
+                <p class="mt-6 text-[1rem] leading-8 text-mist">
+                  A flagship conference system designed to extend across web, social, stage, and venue environments
+                  while staying consistent through rapid update cycles.
+                </p>
+                <p class="mt-6 text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ash">
+                  Event system / templates / environmental design / multi-format rollout
+                </p>
+                <span class="mt-6 inline-flex text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal">View Case Study</span>
+              </div>
+            </article>
+
+            <article class="bg-obsidian p-8 md:p-10">
+              <div class="editorial-image aspect-square">
+                <img src="materials/backgrounds_.jpg" alt="ArisGlobal project image" class="object-[68%_center]" />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/45 via-transparent to-transparent"></div>
+              </div>
+              <div class="mt-8">
+                <span class="eyebrow">ArisGlobal</span>
+                <h3 class="mt-6 text-[clamp(1.55rem,2.2vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ivory">Enterprise brand system built for adoption and consistency</h3>
+                <p class="mt-6 text-[1rem] leading-8 text-mist">
+                  A rebrand and internal brand hub built to help a global organization work more consistently across
+                  templates, assets, product communications, and team handoffs.
+                </p>
+                <p class="mt-6 text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ash">
+                  Brand governance / internal systems / templates / enterprise rollout
+                </p>
+                <span class="mt-6 inline-flex text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal">View Case Study</span>
+              </div>
+            </article>
+
+            <article class="bg-obsidian p-8 md:p-10">
+              <div class="editorial-image aspect-square">
+                <img src="materials/backgrounds_.jpg" alt="Delray Garden Center project image" class="object-[36%_center]" />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/45 via-transparent to-transparent"></div>
+              </div>
+              <div class="mt-8">
+                <span class="eyebrow">Delray Garden Center</span>
+                <h3 class="mt-6 text-[clamp(1.55rem,2.2vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ivory">Identity system designed for physical rollout</h3>
+                <p class="mt-6 text-[1rem] leading-8 text-mist">
+                  A modern visual identity translated across signage, vehicles, and branded materials with attention
+                  to production realities and long-term consistency.
+                </p>
+                <p class="mt-6 text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ash">
+                  Identity / signage / physical brand / implementation
+                </p>
+                <span class="mt-6 inline-flex text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal">View Case Study</span>
+              </div>
+            </article>
+
+            <article class="bg-obsidian p-8 md:p-10">
+              <div class="editorial-image aspect-square">
+                <img src="assets/img/placeholders/landing-spot.svg" alt="Sophia and Bob project image" class="object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/35 via-transparent to-transparent"></div>
+              </div>
+              <div class="mt-8">
+                <span class="eyebrow">Sophia &amp; Bob</span>
+                <h3 class="mt-6 text-[clamp(1.55rem,2.2vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ivory">Illustration system built for continuity and print delivery</h3>
+                <p class="mt-6 text-[1rem] leading-8 text-mist">
+                  A children's book production approach combining character consistency, prompt structure, retouching,
+                  and print-ready output across multiple scenes.
+                </p>
+                <p class="mt-6 text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ash">
+                  Publishing / continuity / retouching / production workflow
+                </p>
+                <span class="mt-6 inline-flex text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal">View Case Study</span>
+              </div>
+            </article>
+
+            <article class="bg-obsidian p-8 md:p-10">
+              <div class="editorial-image aspect-square">
+                <img src="materials/backgrounds_.jpg" alt="Miss Dior project image" class="object-[58%_center]" />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/45 via-transparent to-transparent"></div>
+              </div>
+              <div class="mt-8">
+                <span class="eyebrow">Miss Dior</span>
+                <h3 class="mt-6 text-[clamp(1.55rem,2.2vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-ivory">Concept motion piece for social-first luxury storytelling</h3>
+                <p class="mt-6 text-[1rem] leading-8 text-mist">
+                  A short-form campaign study exploring how generated imagery and motion finishing can support
+                  stylized, high-control visual storytelling.
+                </p>
+                <p class="mt-6 text-[0.76rem] font-semibold uppercase tracking-[0.22em] text-ash">
+                  Motion / concept / luxury / visual storytelling
+                </p>
+                <span class="mt-6 inline-flex text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:text-signal">View Case Study</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="grid-12 frame items-stretch py-16 md:py-24 xl:py-28">
+          <div class="col-span-12 md:col-span-6 reveal">
+            <div class="editorial-image aspect-[4/5] md:aspect-[1/1]">
+              <img src="assets/img/placeholders/landing-spot.svg" alt="Silent Studio work composition" class="object-cover" />
+              <div class="absolute inset-0 bg-black/38 mix-blend-multiply"></div>
+            </div>
+          </div>
+
+          <div class="col-span-12 flex items-center md:col-span-6 reveal">
+            <div class="copy-lockup pl-0 md:pl-10 xl:pl-16">
+              <span class="eyebrow">Framing</span>
+              <h2 class="section-title mt-8">Different outputs, same discipline.</h2>
+              <p class="lede mt-8">
+                Across identity systems, event design, campaign assets, and structured production, the same
+                priorities stay in place: clarity, consistency, repeatability, and control.
+              </p>
+              <p class="mt-8 text-base leading-8 text-mist">
+                The goal is not only to make strong work, but to create the conditions for strong work to keep
+                happening.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="frame py-16 md:py-24 xl:py-28">
+          <div class="grid-12 items-start">
+            <div class="col-span-12 md:col-span-4 reveal">
+              <span class="eyebrow">Principles</span>
+              <h2 class="section-title mt-8">What the work tends to solve</h2>
+            </div>
+            <div class="col-span-12 md:col-span-8">
+              <div class="grid gap-px bg-softline reveal md:grid-cols-2">
+                <article class="bg-obsidian p-8 md:p-10"><p class="text-[1.15rem] leading-8 text-ivory">Brand drift across channels</p></article>
+                <article class="bg-obsidian p-8 md:p-10"><p class="text-[1.15rem] leading-8 text-ivory">Slow, fragmented production</p></article>
+                <article class="bg-obsidian p-8 md:p-10"><p class="text-[1.15rem] leading-8 text-ivory">Lack of reusable structures</p></article>
+                <article class="bg-obsidian p-8 md:p-10"><p class="text-[1.15rem] leading-8 text-ivory">Inconsistent visual execution</p></article>
+                <article class="bg-obsidian p-8 md:p-10"><p class="text-[1.15rem] leading-8 text-ivory">Growing output without operational clarity</p></article>
+                <article class="bg-obsidian p-8 md:p-10"><p class="text-[1.15rem] leading-8 text-ivory">High-volume content needs under tight timelines</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rule">
+        <div class="frame py-16 md:py-24 xl:py-28">
+          <div class="grid-12 items-end">
+            <div class="col-span-12 md:col-span-7 reveal">
+              <span class="eyebrow">Final CTA</span>
+              <h2 class="mt-8 max-w-[13ch] text-[clamp(2.45rem,4.8vw,5.2rem)] font-semibold leading-[0.95] tracking-display text-ivory">
+                Need stronger output without weaker standards?
+              </h2>
+            </div>
+            <div class="col-span-12 md:col-span-5 reveal">
+              <p class="copy-measure lede">
+                Silent Studio works across brand systems, campaign production, and structured content operations for
+                teams that need more consistency as output grows.
+              </p>
+              <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                <a
+                  href="mailto:hello@silentstudio.design?subject=Discuss%20a%20project"
+                  class="inline-flex min-h-[52px] items-center justify-center bg-signal px-6 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:bg-ivory hover:text-obsidian"
+                  >Discuss a Project</a
+                >
+                <a
+                  href="/index.html"
+                  class="inline-flex min-h-[52px] items-center justify-center border border-line px-6 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ivory transition hover:border-ivory hover:bg-white/[0.04]"
+                  >Back to Home</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="section-rule relative overflow-hidden">
+      <div class="footer-field absolute inset-0"></div>
+      <div class="frame relative py-16 md:py-24 xl:py-28">
+        <div class="grid-12 gap-y-12">
+          <div class="col-span-12 reveal">
+            <div class="editorial-image h-28 md:h-36 xl:h-40">
+              <img src="materials/backgrounds_.jpg" alt="Monochrome image stripe" class="object-[50%_58%]" />
+              <div class="absolute inset-0 bg-gradient-to-r from-obsidian/35 via-transparent to-obsidian/45"></div>
+              <div class="absolute right-0 top-0 h-full w-10 bg-signal md:w-14"></div>
+            </div>
+          </div>
+
+          <div class="col-span-12 md:col-span-4 md:self-end reveal">
+            <span class="silent-mark" aria-label="Silent">
+              <span class="silent-mark-angle">&lt;</span>
+              <span class="mx-[0.42rem]">Silent</span>
+              <span class="silent-mark-angle">&gt;</span>
+            </span>
+          </div>
+
+          <div class="col-span-12 md:col-span-6 md:col-start-7 reveal">
+            <p class="ml-auto max-w-[11ch] text-right text-[clamp(2.4rem,4.8vw,5.6rem)] font-semibold leading-[0.94] tracking-display text-ivory">
+              More output. Stronger standards. Better control.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-14 grid-12 items-end border-t border-softline pt-6">
+          <div class="col-span-12 md:col-span-4 reveal">
+            <div class="grid gap-4 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ash">
+              <a class="transition hover:text-ivory" href="/index.html">Home</a>
+              <a class="text-ivory" href="/work.html" aria-current="page">Work</a>
+              <a class="transition hover:text-ivory" href="mailto:hello@silentstudio.design">hello@silentstudio.design</a>
+            </div>
+          </div>
+
+          <div class="col-span-12 mt-10 flex flex-col gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-ash md:col-span-4 md:col-start-9 md:mt-0 md:items-end">
+            <span>USA-EST / Remote</span>
+            <span>&copy; 2026 Silent Studio</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.querySelector("[data-site-header]");
+      const navToggle = document.querySelector("[data-nav-toggle]");
+      const mobilePanel = document.querySelector("[data-mobile-panel]");
+      const revealItems = document.querySelectorAll(".reveal");
+      const heroInteractive = document.querySelector("[data-hero-interactive]");
+      let heroIdleTimer;
+
+      const setHeaderState = () => {
+        if (!header) return;
+        header.classList.toggle("is-scrolled", window.scrollY > 16);
+      };
+
+      setHeaderState();
+      window.addEventListener("scroll", setHeaderState, { passive: true });
+
+      if (navToggle && mobilePanel) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          navToggle.setAttribute("aria-expanded", String(!isOpen));
+          mobilePanel.classList.toggle("hidden", isOpen);
+        });
+      }
+
+      if ("IntersectionObserver" in window && revealItems.length > 0) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.18 }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      }
+
+      if (heroInteractive && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const setHeroTrail = (clientX, clientY) => {
+          const bounds = heroInteractive.getBoundingClientRect();
+          const x = ((clientX - bounds.left) / bounds.width) * 100;
+          const y = ((clientY - bounds.top) / bounds.height) * 100;
+
+          heroInteractive.style.setProperty("--trail-x", `${Math.max(0, Math.min(100, x))}%`);
+          heroInteractive.style.setProperty("--trail-y", `${Math.max(0, Math.min(100, y))}%`);
+          heroInteractive.classList.remove("is-idle");
+
+          window.clearTimeout(heroIdleTimer);
+          heroIdleTimer = window.setTimeout(() => {
+            heroInteractive.classList.add("is-idle");
+          }, 260);
+        };
+
+        heroInteractive.addEventListener("pointermove", (event) => {
+          setHeroTrail(event.clientX, event.clientY);
+        });
+
+        heroInteractive.addEventListener("pointerenter", (event) => {
+          setHeroTrail(event.clientX, event.clientY);
+        });
+
+        heroInteractive.addEventListener("pointerleave", () => {
+          heroInteractive.classList.add("is-idle");
+          heroInteractive.style.setProperty("--trail-x", "50%");
+          heroInteractive.style.setProperty("--trail-y", "34%");
+        });
+      }
+    </script>
+  </body>
+</html>
