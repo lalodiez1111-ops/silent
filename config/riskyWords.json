@@ -1,10 +1,64 @@
 {
   "risky_words": [
-    "guarantee",
-    "best",
-    "no risk",
-    "risk-free",
-    "never fails",
-    "instant results"
+    {
+      "term": "guarantee",
+      "risk_level": "high",
+      "reason": "Implied certainty can create legal and trust risk if outcomes vary.",
+      "alternatives": [
+        "designed to improve",
+        "built to support",
+        "intended to help"
+      ]
+    },
+    {
+      "term": "best",
+      "risk_level": "high",
+      "reason": "Absolute claim that is difficult to substantiate.",
+      "alternatives": [
+        "designed for",
+        "built to support",
+        "optimized for"
+      ]
+    },
+    {
+      "term": "no risk",
+      "risk_level": "high",
+      "reason": "Risk elimination claims are typically misleading in client messaging.",
+      "alternatives": [
+        "lower risk",
+        "reduced risk",
+        "risk-aware"
+      ]
+    },
+    {
+      "term": "risk-free",
+      "risk_level": "high",
+      "reason": "Risk elimination claims are typically misleading in client messaging.",
+      "alternatives": [
+        "lower-risk",
+        "reduced exposure",
+        "risk-aware"
+      ]
+    },
+    {
+      "term": "never fails",
+      "risk_level": "high",
+      "reason": "Absolute reliability language can overpromise.",
+      "alternatives": [
+        "reliably supports",
+        "consistently helps",
+        "proven to support"
+      ]
+    },
+    {
+      "term": "instant results",
+      "risk_level": "medium",
+      "reason": "Immediate outcome claims may set unrealistic expectations.",
+      "alternatives": [
+        "faster results",
+        "quicker feedback",
+        "shorter time to value"
+      ]
+    }
   ]
 }

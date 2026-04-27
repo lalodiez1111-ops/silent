@@ -452,8 +452,17 @@ class AgentOrchestrator:
         risky_config = load_json(path_from_root("config", "riskyWords.json"))
 
         generated_content = self._generate_brand_content(payload, selected_template, template_text, brand_profiles)
-        validation = validate_generated_content(generated_content, risky_config.get("risky_words", []))
+        validation = validate_generated_content(generated_content, risky_config)
         timestamp = timestamp_slug()
+        summary = {
+            "what_was_generated": {
+                "ad_headlines": len(generated_content.get("ad_headlines", [])),
+                "short_descriptions": len(generated_content.get("short_descriptions", [])),
+                "long_descriptions": 1 if generated_content.get("long_description") else 0,
+            },
+            "tone_used": generated_content.get("tone_used", payload.get("tone", "Not specified")),
+            "issues_found": [item.get("term", "") for item in validation.get("findings", [])],
+        }
         data = {
             "metadata": {
                 "engine": "brand-content-v2",
@@ -462,6 +471,7 @@ class AgentOrchestrator:
             "input": payload,
             "generated_content": generated_content,
             "validation": validation,
+            "summary": summary,
             "timestamp": timestamp,
         }
         markdown = self._render_brand_content_markdown(data)
@@ -514,6 +524,7 @@ class AgentOrchestrator:
         return {
             "template_used": template_name,
             "template_preview": template_text.splitlines()[:8],
+            "tone_used": effective_tone,
             "ad_headlines": ad_headlines,
             "short_descriptions": short_descriptions,
             "long_description": long_description,
@@ -521,22 +532,79 @@ class AgentOrchestrator:
         }
 
     def _render_brand_content_markdown(self, data: dict[str, Any]) -> str:
-        """Render brand-content output into compact markdown."""
+        """Render brand-content output into a client-ready markdown deliverable."""
+        template_titles = {
+            "ad_pack": "Ad Pack",
+            "social_caption": "Social Caption",
+            "landing_section": "Landing Section",
+        }
         generated = data["generated_content"]
         validation = data["validation"]
-        lines = [
-            "# Brand Content Engine v2 Output",
-            "",
-            f"- Template: {data['metadata']['template']}",
-            f"- Validation: {validation['status']}",
-            f"- Flagged terms: {', '.join(validation['flagged_terms']) or 'None'}",
-            "",
-            "## Headlines",
+        template_key = data["metadata"]["template"]
+        template_title = template_titles.get(template_key, template_key.replace("_", " ").title())
+        findings = validation.get("findings", [])
+        overall_status = validation.get("overall_status", validation.get("status", "approved"))
+        overall_risk = validation.get("risk_level", "low")
+        finding_terms = [item.get("term", "") for item in findings if item.get("term")]
+
+        summary_lines = [
+            "## Summary",
+            f"- Generated: 3 ad headlines, 2 short descriptions, and 1 long description for {data['input']['product_name']}.",
+            f"- Tone used: {generated.get('tone_used', data['input'].get('tone', 'Not specified'))}.",
+            f"- Validation: {overall_status} ({overall_risk} risk).",
         ]
+        if finding_terms:
+            summary_lines.append(f"- Issues found: {', '.join(finding_terms)}.")
+        else:
+            summary_lines.append("- Issues found: none.")
+
+        lines = [
+            f"# {template_title}",
+            "",
+            "## Content Brief",
+            f"- Brand: {data['input'].get('brand_name', 'N/A')}",
+            f"- Product: {data['input'].get('product_name', 'N/A')}",
+            f"- Audience: {data['input'].get('audience', 'N/A')}",
+            f"- Template type: {template_title}",
+            "",
+            "## Tone Summary",
+            f"- Requested tone: {data['input'].get('tone', 'N/A')}",
+            f"- Applied tone: {generated.get('tone_used', data['input'].get('tone', 'N/A'))}",
+            "",
+            "## Validation Review",
+            f"- Status: {overall_status}",
+            f"- Risk level: {overall_risk}",
+            f"- Flagged terms: {', '.join(finding_terms) or 'None'}",
+            "",
+            "## Validation Findings",
+        ]
+        if findings:
+            for item in findings:
+                alternatives = ", ".join(item.get("alternatives", [])) or "results can vary"
+                risk = str(item.get("risk_level", "medium")).capitalize()
+                lines.extend(
+                    [
+                        f"- Term: \"{item.get('term', '')}\"",
+                        f"  Risk: {risk}",
+                        f"  Reason: {item.get('reason', 'Language may create compliance risk.')}",
+                        f"  Suggested alternatives: {alternatives}",
+                        f"  Occurrences: {item.get('occurrences', 1)}",
+                    ]
+                )
+        else:
+            lines.append("- No risky terms were detected.")
+
+        lines.extend(
+            [
+                "",
+                "## Ad Headlines",
+            ]
+        )
         lines.extend(f"- {item}" for item in generated["ad_headlines"])
         lines.extend(["", "## Short Descriptions"])
         lines.extend(f"- {item}" for item in generated["short_descriptions"])
-        lines.extend(["", "## Long Description", generated["long_description"]])
+        lines.extend(["", "## Long Description", generated["long_description"], ""])
+        lines.extend(summary_lines)
         return "\n".join(lines)
 
     def _supporting_point(self, source_text: str) -> str:
