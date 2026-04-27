@@ -1,4 +1,8 @@
 .DS_Store
+.venv/
+output/
+__pycache__/
+*.pyc
 
 # Common dependency and build output
 node_modules/

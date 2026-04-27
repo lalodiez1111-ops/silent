@@ -1,0 +1,28 @@
+{
+  "lead_sources": [
+    "LinkedIn jobs",
+    "company careers pages",
+    "Crunchbase",
+    "PitchBook",
+    "newsletters",
+    "industry lists",
+    "manual prospecting"
+  ],
+  "research_sources": [
+    "company website",
+    "LinkedIn company page",
+    "founder interviews",
+    "sales deck screenshots",
+    "job descriptions",
+    "product pages",
+    "press releases"
+  ],
+  "content_sources": [
+    "case study notes",
+    "call notes",
+    "teardowns",
+    "process observations",
+    "before and after transformations",
+    "presentation design lessons"
+  ]
+}

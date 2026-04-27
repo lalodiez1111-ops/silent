@@ -1,0 +1,21 @@
+{
+  "target_market_notes": "B2B SaaS, healthcare technology, and professional services companies with visible sales, product marketing, or growth complexity.",
+  "keywords": [
+    "brand designer",
+    "presentation design",
+    "design systems",
+    "marketing design",
+    "rebrand"
+  ],
+  "geography_constraints": [
+    "US",
+    "UK"
+  ],
+  "optional_sources": [
+    "LinkedIn jobs",
+    "company careers pages",
+    "manual prospecting notes"
+  ],
+  "use_mock_data": true,
+  "seed_companies": []
+}

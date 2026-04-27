@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CompanyResearchOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "company_name",
+    "business_model",
+    "audience_guess",
+    "current_brand_maturity",
+    "website_observations",
+    "messaging_issues",
+    "UX_issues",
+    "content_system_issues",
+    "presentation_or_sales_enablement_gaps",
+    "likely_business_risk_from_current_state",
+    "recommended_service_angle",
+    "sample_observation_for_outreach",
+    "confidence_notes"
+  ],
+  "properties": {
+    "company_name": {
+      "type": "string"
+    },
+    "business_model": {
+      "type": "string"
+    },
+    "audience_guess": {
+      "type": "string"
+    },
+    "current_brand_maturity": {
+      "type": "string"
+    },
+    "website_observations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "messaging_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "UX_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "content_system_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "presentation_or_sales_enablement_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "likely_business_risk_from_current_state": {
+      "type": "string"
+    },
+    "recommended_service_angle": {
+      "type": "string"
+    },
+    "sample_observation_for_outreach": {
+      "type": "string"
+    },
+    "confidence_notes": {
+      "type": "string"
+    }
+  }
+}

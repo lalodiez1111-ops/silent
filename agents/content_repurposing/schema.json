@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContentRepurposingOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "target_lane",
+    "hook_options",
+    "linkedin_post",
+    "short_post_sequence",
+    "short_form_video_script",
+    "case_study_outline",
+    "headline_options",
+    "cta_suggestion"
+  ],
+  "properties": {
+    "target_lane": {
+      "type": "string"
+    },
+    "hook_options": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "linkedin_post": {
+      "type": "string"
+    },
+    "short_post_sequence": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "short_form_video_script": {
+      "type": "string"
+    },
+    "case_study_outline": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "string"
+      }
+    },
+    "headline_options": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "cta_suggestion": {
+      "type": "string"
+    }
+  }
+}

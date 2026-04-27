@@ -1,0 +1,37 @@
+{
+  "default_output_dir": "output",
+  "default_lane": "SilentStudio",
+  "lead_scoring_weights": {
+    "commercial_upside": 1.0,
+    "urgency_signal": 1.0,
+    "fit_with_strengths": 1.0,
+    "ease_of_outreach_angle": 1.0
+  },
+  "lane_preferences": {
+    "SilentStudio": {
+      "positioning": "Brand systems, presentation systems, web UX cleanup, production systems, and AI-assisted workflows for teams that need better output without losing control.",
+      "voice": [
+        "clear",
+        "commercially aware",
+        "specific",
+        "practical",
+        "taste-led"
+      ]
+    },
+    "hernandezdiez.com": {
+      "positioning": "Authority building through sharp case studies, systems thinking, creative process clarity, and practical observations about quality at scale.",
+      "voice": [
+        "crisp",
+        "thoughtful",
+        "strategically sharp",
+        "not hype-driven",
+        "useful"
+      ]
+    }
+  },
+  "content_defaults": {
+    "linkedin_post_max_words": 220,
+    "thread_length": 5,
+    "video_script_target_seconds": 45
+  }
+}

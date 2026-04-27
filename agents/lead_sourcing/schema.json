@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LeadSourcingOutput",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "company_name",
+      "website",
+      "source",
+      "signal_detected",
+      "why_it_matters",
+      "likely_problem",
+      "suggested_angle",
+      "decision_maker_guess",
+      "priority_score",
+      "notes"
+    ],
+    "properties": {
+      "company_name": {
+        "type": "string"
+      },
+      "website": {
+        "type": "string"
+      },
+      "source": {
+        "type": "string"
+      },
+      "signal_detected": {
+        "type": "string"
+      },
+      "why_it_matters": {
+        "type": "string"
+      },
+      "likely_problem": {
+        "type": "string"
+      },
+      "suggested_angle": {
+        "type": "string"
+      },
+      "decision_maker_guess": {
+        "type": "string"
+      },
+      "priority_score": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 5
+      },
+      "notes": {
+        "type": "string"
+      },
+      "score_breakdown": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "commercial_upside": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "urgency_signal": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "fit_with_strengths": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "ease_of_outreach_angle": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    }
+  }
+}
