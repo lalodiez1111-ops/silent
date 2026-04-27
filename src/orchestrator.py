@@ -501,25 +501,34 @@ class AgentOrchestrator:
 
         profile_key = slugify_filename(brand_name)
         profile = brand_profiles.get(profile_key, brand_profiles.get("default", {}))
-        effective_tone = profile.get("tone") or tone
+        effective_tone = profile.get("tone") if profile_key in brand_profiles and profile.get("tone") else tone
 
-        primary = key_points[0]
-        secondary = key_points[1] if len(key_points) > 1 else key_points[0]
-        tertiary = key_points[2] if len(key_points) > 2 else key_points[0]
+        audience_label = self._audience_label(audience)
+        product_reference = self._product_reference(product_name)
+        benefits = self._brand_benefits_from_key_points(key_points, effective_tone)
+        primary = benefits[0]
+        secondary = benefits[1] if len(benefits) > 1 else benefits[0]
+        tertiary = benefits[2] if len(benefits) > 2 else benefits[0]
 
         ad_headlines = [
-            f"{brand_name} {product_name}: {primary}",
-            f"{product_name} for {audience} who need {secondary}",
-            f"{effective_tone.capitalize()} results start with {product_name}",
+            self._polish_brand_copy(f"{brand_name}: Compare With Clarity", effective_tone),
+            self._polish_brand_copy(f"Clear Guidance for {audience_label}", effective_tone),
+            self._polish_brand_copy(self._headline_from_benefit(primary), effective_tone),
         ]
         short_descriptions = [
-            f"{product_name} helps {audience} deliver {primary} with a {effective_tone} approach.",
-            f"Built by {brand_name}, {product_name} improves {secondary} and {tertiary} without extra complexity.",
+            self._polish_brand_copy(
+                f"{product_reference} gives {audience_label.lower()} a clearer way to compare coverage options.",
+                effective_tone,
+            ),
+            self._polish_brand_copy(
+                f"Built by {brand_name}, it supports {secondary} and {tertiary} without pressure.",
+                effective_tone,
+            ),
         ]
         long_description = (
-            f"{brand_name} introduces {product_name} for {audience}. "
-            f"Using a {effective_tone} voice, the offer centers on {', '.join(key_points)}. "
-            f"{product_name} makes these outcomes repeatable so teams move faster with clearer decisions."
+            f"{brand_name} introduces {product_name} for {audience_label.lower()}. "
+            f"Using a {effective_tone} voice, the offer centers on {primary}, {secondary}, and {tertiary}. "
+            f"It keeps the path to a quote or consultation clear, educational, and easier to review."
         )
         return {
             "template_used": template_name,
@@ -530,6 +539,104 @@ class AgentOrchestrator:
             "long_description": long_description,
             "applied_constraints": profile.get("constraints", []),
         }
+
+    def _product_reference(self, product_name: str) -> str:
+        """Return a readable product reference for sentence copy."""
+        lowered = product_name.lower()
+        if "coverage" in lowered and "comparison" in lowered and "experience" in lowered:
+            return "The comparison experience"
+        return product_name
+
+    def _headline_from_benefit(self, benefit: str) -> str:
+        """Convert a benefit phrase into a compact headline."""
+        lowered = benefit.lower()
+        if "coverage" in lowered and "comparison" in lowered:
+            return "Clearer Coverage Choices"
+        if "state-agnostic" in lowered:
+            return "Guidance That Travels"
+        if "review-ready" in lowered:
+            return "Review-Ready Education"
+        return benefit.title()
+
+    def _audience_label(self, audience: str) -> str:
+        """Condense long audience notes into copy-friendly labels."""
+        cleaned = " ".join(audience.replace("/", " ").split()).strip(" .,")
+        lowered = cleaned.lower()
+        if "insurance" in lowered and any(word in lowered for word in ["people", "consumer", "personal"]):
+            return "Insurance Shoppers"
+        if "brand" in lowered and "leader" in lowered:
+            return "Brand Leaders"
+        if "marketing" in lowered and "leader" in lowered:
+            return "Marketing Leaders"
+        if "team" in lowered:
+            return "Teams"
+
+        words = cleaned.split()
+        if len(words) <= 4:
+            return cleaned.title()
+        return " ".join(words[:4]).title()
+
+    def _brand_benefits_from_key_points(self, key_points: list[str], tone: str) -> list[str]:
+        """Turn raw constraints and notes into concise benefit phrases."""
+        benefits: list[str] = []
+        for point in key_points:
+            benefit = self._benefit_from_key_point(point)
+            benefit = self._polish_brand_copy(benefit, tone).strip(" .")
+            if benefit and benefit.lower() not in [item.lower() for item in benefits]:
+                benefits.append(benefit)
+
+        fallback = ["clearer coverage comparison", "review-ready guidance", "a calmer quote path"]
+        for item in fallback:
+            if len(benefits) >= 3:
+                break
+            if item.lower() not in [benefit.lower() for benefit in benefits]:
+                benefits.append(item)
+        return benefits
+
+    def _benefit_from_key_point(self, key_point: str) -> str:
+        """Map common raw proof-brand notes into safer benefit language."""
+        lowered = " ".join(key_point.lower().split())
+        if "compare" in lowered and "coverage" in lowered:
+            return "clearer coverage comparison"
+        if "state-agnostic" in lowered or "unsupported claims" in lowered:
+            return "state-agnostic guidance"
+        if "quote" in lowered or "consultation" in lowered:
+            return "a calm path to next steps"
+        if "educational" in lowered or "review-ready" in lowered or "regulated" in lowered:
+            return "review-ready education"
+
+        cleaned = key_point.strip(" .")
+        replacements = {
+            "Help people ": "",
+            "Use ": "",
+            "Guide users toward ": "",
+            "Keep messaging ": "",
+        }
+        for source, replacement in replacements.items():
+            cleaned = cleaned.replace(source, replacement)
+        return cleaned[:80].strip(" ,.")
+
+    def _polish_brand_copy(self, copy: str, tone: str) -> str:
+        """Apply tone-aware cleanup without changing output structure."""
+        cleaned = " ".join(copy.split())
+        if "compliance-aware" in tone.lower():
+            replacements = {
+                "guaranteed approval": "approval expectations",
+                "guaranteed": "specific",
+                "guarantee": "support",
+                "best": "strong",
+                "no risk": "lower uncertainty",
+                "lowest": "competitive",
+                "instant approval": "streamlined review",
+            }
+            lowered = cleaned.lower()
+            for risky, safer in replacements.items():
+                while risky in lowered:
+                    start = lowered.index(risky)
+                    end = start + len(risky)
+                    cleaned = f"{cleaned[:start]}{safer}{cleaned[end:]}"
+                    lowered = cleaned.lower()
+        return cleaned
 
     def _render_brand_content_markdown(self, data: dict[str, Any]) -> str:
         """Render brand-content output into a client-ready markdown deliverable."""
