@@ -1,0 +1,27 @@
+{
+  "default": {
+    "tone": "confident",
+    "style": [
+      "clear",
+      "practical",
+      "specific"
+    ],
+    "constraints": [
+      "Avoid exaggerated claims",
+      "Keep language easy to scan",
+      "Use audience-focused phrasing"
+    ]
+  },
+  "northstar-labs": {
+    "tone": "confident and straightforward",
+    "style": [
+      "B2B clarity",
+      "credible outcomes",
+      "low-fluff wording"
+    ],
+    "constraints": [
+      "Do not use superlatives without support",
+      "Prioritize product utility over hype"
+    ]
+  }
+}

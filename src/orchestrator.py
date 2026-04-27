@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .csv_import import load_lead_csv
+from .validation import validate_generated_content
 from .utils import (
     average_score,
     compact_lines,
@@ -74,10 +75,14 @@ class AgentOrchestrator:
         elif agent == "content":
             data, markdown = self._run_content_repurposing(payload)
             schema_path = path_from_root("agents", "content_repurposing", "schema.json")
+        elif agent == "brand-content":
+            data, markdown = self._run_brand_content(payload)
+            schema_path = None
         else:
             raise ValueError(f"Unsupported agent: {agent}")
 
-        validate_against_schema(data, schema_path)
+        if schema_path is not None:
+            validate_against_schema(data, schema_path)
         artifacts = self._save_outputs(agent, data, markdown, output_name=output_name)
         return data, markdown, artifacts
 
@@ -429,6 +434,110 @@ class AgentOrchestrator:
         }
         markdown = self._render_content_markdown(data, voice)
         return data, markdown
+
+    def _run_brand_content(self, payload: dict[str, Any]) -> tuple[dict[str, Any], str]:
+        """Run Brand Content Engine v2 flow without affecting other agent flows."""
+        required = ["brand_name", "product_name", "audience", "tone", "key_points"]
+        missing = [field for field in required if field not in payload]
+        if missing:
+            raise ValueError(f"Missing required brand content fields: {', '.join(missing)}")
+
+        key_points = payload.get("key_points", [])
+        if not isinstance(key_points, list) or not key_points:
+            raise ValueError("key_points must be a non-empty list of strings")
+
+        selected_template = self._select_brand_template(payload)
+        template_text = load_text(path_from_root("templates", f"{selected_template}.md"))
+        brand_profiles = load_json(path_from_root("config", "brandProfiles.json"))
+        risky_config = load_json(path_from_root("config", "riskyWords.json"))
+
+        generated_content = self._generate_brand_content(payload, selected_template, template_text, brand_profiles)
+        validation = validate_generated_content(generated_content, risky_config.get("risky_words", []))
+        timestamp = timestamp_slug()
+        data = {
+            "metadata": {
+                "engine": "brand-content-v2",
+                "template": selected_template,
+            },
+            "input": payload,
+            "generated_content": generated_content,
+            "validation": validation,
+            "timestamp": timestamp,
+        }
+        markdown = self._render_brand_content_markdown(data)
+        return data, markdown
+
+    def _select_brand_template(self, payload: dict[str, Any]) -> str:
+        """Select a known template name from payload with safe default."""
+        requested = str(payload.get("template", "ad_pack")).strip().lower().replace("-", "_")
+        valid_templates = {"ad_pack", "social_caption", "landing_section"}
+        return requested if requested in valid_templates else "ad_pack"
+
+    def _generate_brand_content(
+        self,
+        payload: dict[str, Any],
+        template_name: str,
+        template_text: str,
+        brand_profiles: dict[str, Any],
+    ) -> dict[str, Any]:
+        """Generate deterministic brand copy using template and profile constraints."""
+        brand_name = str(payload["brand_name"]).strip()
+        product_name = str(payload["product_name"]).strip()
+        audience = str(payload["audience"]).strip()
+        tone = str(payload["tone"]).strip()
+        key_points = [str(point).strip() for point in payload["key_points"] if str(point).strip()]
+        if not key_points:
+            raise ValueError("key_points must include at least one non-empty value")
+
+        profile_key = slugify_filename(brand_name)
+        profile = brand_profiles.get(profile_key, brand_profiles.get("default", {}))
+        effective_tone = profile.get("tone") or tone
+
+        primary = key_points[0]
+        secondary = key_points[1] if len(key_points) > 1 else key_points[0]
+        tertiary = key_points[2] if len(key_points) > 2 else key_points[0]
+
+        ad_headlines = [
+            f"{brand_name} {product_name}: {primary}",
+            f"{product_name} for {audience} who need {secondary}",
+            f"{effective_tone.capitalize()} results start with {product_name}",
+        ]
+        short_descriptions = [
+            f"{product_name} helps {audience} deliver {primary} with a {effective_tone} approach.",
+            f"Built by {brand_name}, {product_name} improves {secondary} and {tertiary} without extra complexity.",
+        ]
+        long_description = (
+            f"{brand_name} introduces {product_name} for {audience}. "
+            f"Using a {effective_tone} voice, the offer centers on {', '.join(key_points)}. "
+            f"{product_name} makes these outcomes repeatable so teams move faster with clearer decisions."
+        )
+        return {
+            "template_used": template_name,
+            "template_preview": template_text.splitlines()[:8],
+            "ad_headlines": ad_headlines,
+            "short_descriptions": short_descriptions,
+            "long_description": long_description,
+            "applied_constraints": profile.get("constraints", []),
+        }
+
+    def _render_brand_content_markdown(self, data: dict[str, Any]) -> str:
+        """Render brand-content output into compact markdown."""
+        generated = data["generated_content"]
+        validation = data["validation"]
+        lines = [
+            "# Brand Content Engine v2 Output",
+            "",
+            f"- Template: {data['metadata']['template']}",
+            f"- Validation: {validation['status']}",
+            f"- Flagged terms: {', '.join(validation['flagged_terms']) or 'None'}",
+            "",
+            "## Headlines",
+        ]
+        lines.extend(f"- {item}" for item in generated["ad_headlines"])
+        lines.extend(["", "## Short Descriptions"])
+        lines.extend(f"- {item}" for item in generated["short_descriptions"])
+        lines.extend(["", "## Long Description", generated["long_description"]])
+        return "\n".join(lines)
 
     def _supporting_point(self, source_text: str) -> str:
         """Pull a concise supporting observation from the source text."""

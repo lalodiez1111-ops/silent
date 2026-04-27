@@ -18,7 +18,7 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     run_parser = subparsers.add_parser("run", help="Run one agent with a JSON input file.")
-    run_parser.add_argument("agent", choices=["lead", "research", "content"], help="Agent to run.")
+    run_parser.add_argument("agent", choices=["lead", "research", "content", "brand-content", "brand"], help="Agent to run.")
     run_parser.add_argument("--input", help="Path to the input JSON file.")
     run_parser.add_argument("--csv", help="Path to a CSV file for lead import.")
     run_parser.add_argument("--limit", type=int, help="Limit the number of imported CSV rows.")
@@ -45,7 +45,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     sample_parser = subparsers.add_parser("sample", help="Show the built-in sample input path for an agent.")
-    sample_parser.add_argument("agent", choices=["lead", "research", "content"], help="Agent to inspect.")
+    sample_parser.add_argument("agent", choices=["lead", "research", "content", "brand-content", "brand"], help="Agent to inspect.")
 
     ui_parser = subparsers.add_parser("ui", help="Run the local Silent Agents button-based UI.")
     ui_parser.add_argument("--host", default="127.0.0.1", help="Host to bind the UI server.")
@@ -59,6 +59,8 @@ def default_sample_input_path(agent: str) -> Path:
         "lead": path_from_root("agents", "lead_sourcing", "sample_input.json"),
         "research": path_from_root("agents", "company_research", "sample_input.json"),
         "content": path_from_root("agents", "content_repurposing", "sample_input.json"),
+        "brand-content": path_from_root("agents", "brand_content", "sample_input.json"),
+        "brand": path_from_root("agents", "brand_content", "sample_input.json"),
     }
     return sample_paths[agent]
 
@@ -96,6 +98,8 @@ def main() -> None:
     if not input_path and not csv_path:
         parser.error("the following arguments are required: --input, --csv, or --use-sample")
 
+    selected_agent = "brand-content" if args.agent == "brand" else args.agent
+
     orchestrator = AgentOrchestrator(
         preferences_path=args.preferences,
         sources_path=args.sources,
@@ -103,7 +107,7 @@ def main() -> None:
     )
     try:
         data, _markdown, artifacts = orchestrator.run(
-            agent=args.agent,
+            agent=selected_agent,
             input_path=input_path,
             csv_path=csv_path,
             limit=args.limit,
@@ -114,21 +118,27 @@ def main() -> None:
     except ValueError as exc:
         parser.exit(2, f"Error: {exc}\n")
 
-    print(f"Agent run complete: {args.agent}")
+    print(f"Agent run complete: {selected_agent}")
     print(f"JSON saved to: {Path(artifacts.json_path)}")
     print(f"Markdown saved to: {Path(artifacts.markdown_path)}")
 
-    if args.agent == "lead":
+    if selected_agent == "lead":
         print(f"Leads returned: {len(data)}")
         if data:
             top = data[0]
             print(f"Top lead: {top['company_name']} ({top['priority_score']}/5)")
-    elif args.agent == "research":
+    elif selected_agent == "research":
         print(f"Company: {data['company_name']}")
         print(f"Recommended angle: {data['recommended_service_angle']}")
-    elif args.agent == "content":
+    elif selected_agent == "content":
         print(f"Lane: {data['target_lane']}")
         print(f"Headline option: {data['headline_options'][0]}")
+    elif selected_agent == "brand-content":
+        validation = data.get("validation", {})
+        generated = data.get("generated_content", {})
+        headlines = generated.get("ad_headlines", [])
+        print(f"Validation status: {validation.get('status', 'unknown')}")
+        print(f"Headlines generated: {len(headlines)}")
 
 
 if __name__ == "__main__":
