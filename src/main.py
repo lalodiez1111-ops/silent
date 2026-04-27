@@ -137,7 +137,7 @@ def main() -> None:
         validation = data.get("validation", {})
         generated = data.get("generated_content", {})
         headlines = generated.get("ad_headlines", [])
-        print(f"Validation status: {validation.get('status', 'unknown')}")
+        print(f"Validation status: {validation.get('overall_status', validation.get('status', 'unknown'))}")
         print(f"Headlines generated: {len(headlines)}")
 
 
